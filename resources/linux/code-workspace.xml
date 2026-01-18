@@ -2,6 +2,6 @@
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
 	<mime-type type="application/x-@@NAME@@-workspace">
 		<comment>@@NAME_LONG@@ Workspace</comment>
-		<glob pattern="*.code-workspace"/>
+		<glob pattern="*.ass-workspace"/>
 	</mime-type>
 </mime-info>

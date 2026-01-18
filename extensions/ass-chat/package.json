@@ -1,0 +1,115 @@
+{
+	"name": "ass-chat",
+	"displayName": "Ass Chat",
+	"description": "Ass AI Assistant for code editing",
+	"version": "1.0.0",
+	"publisher": "ass",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.100.0"
+	},
+	"categories": [
+		"Chat"
+	],
+	"capabilities": {
+		"virtualWorkspaces": true,
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"enabledApiProposals": [
+		"defaultChatParticipant",
+		"chatParticipantAdditions",
+		"chatParticipantPrivate"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"chatParticipants": [
+			{
+				"id": "ass.chat",
+				"name": "ass",
+				"fullName": "Ass",
+				"description": "Ass AI Assistant",
+				"isDefault": true,
+				"locations": [
+					"panel",
+					"terminal",
+					"notebook",
+					"editor",
+					"editingSession"
+				],
+				"commands": [
+					{
+						"name": "about",
+						"description": "About Ass Chat"
+					},
+					{
+						"name": "help",
+						"description": "Get help with Ass"
+					},
+					{
+						"name": "explain",
+						"description": "Explain code"
+					},
+					{
+						"name": "fix",
+						"description": "Fix code issues"
+					},
+					{
+						"name": "generate",
+						"description": "Generate code"
+					}
+				],
+				"modes": [
+					"ask",
+					"edit",
+					"agent"
+				]
+			}
+		],
+		"authentication": [
+			{
+				"id": "ass-provider",
+				"label": "Ass"
+			}
+		],
+		"configuration": {
+			"title": "Ass Chat",
+			"properties": {
+				"ass.chat.apiEndpoint": {
+					"type": "string",
+					"default": "http://localhost:8080/v1/chat/completions",
+					"description": "Backend API endpoint URL"
+				},
+				"ass.chat.apiKey": {
+					"type": "string",
+					"default": "",
+					"description": "API key for authentication"
+				},
+				"ass.chat.model": {
+					"type": "string",
+					"default": "ass-default",
+					"description": "Model name to use"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "ass.chat.start",
+				"title": "Start Chat",
+				"category": "Ass"
+			}
+		]
+	},
+	"scripts": {
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.100.0",
+		"typescript": "^5.4.0"
+	}
+}
